@@ -47,8 +47,23 @@ RUN mkdir -p /var/www/fluxcp \
     && chown -R www:www /var/lib/nginx \
     && chown -R www:www /var/www
 
+COPY config/access.loader.php /tmp/access.loader.php
+COPY config/access.override.default.php /tmp/access.override.default.php
+
+COPY config/application.loader.php /tmp/application.loader.php
+COPY config/application.override.default.php /tmp/application.override.default.php
+
 COPY config/servers.loader.php /tmp/servers.loader.php
 COPY config/servers.override.default.php /tmp/servers.override.default.php
+
+RUN mv '/var/www/fluxcp/config/access.php' '/var/www/fluxcp/config/access.base.php' \
+    && mv '/tmp/access.loader.php' '/var/www/fluxcp/config/access.php' \
+    && mv '/tmp/access.override.default.php' '/var/www/fluxcp/config/access.override.php'
+
+RUN mv '/var/www/fluxcp/config/application.php' '/var/www/fluxcp/config/application.base.php' \
+    && mv '/tmp/application.loader.php' '/var/www/fluxcp/config/application.php' \
+    && mv '/tmp/application.override.default.php' '/var/www/fluxcp/config/application.override.php'
+
 RUN mv '/var/www/fluxcp/config/servers.php' '/var/www/fluxcp/config/servers.base.php' \
     && mv '/tmp/servers.loader.php' '/var/www/fluxcp/config/servers.php' \
     && mv '/tmp/servers.override.default.php' '/var/www/fluxcp/config/servers.override.php'
