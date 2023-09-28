@@ -4,6 +4,8 @@ A shameless ripoff from https://github.com/cmilanf/docker-rathena-fluxcp to crea
 
 Item images was taken from https://rathena.org/board/files/file/2509-item-images/
 
+Sample docker image available on: https://hub.docker.com/r/dijedodol/fluxcp
+
 ## Config Override
 To override the `config/servers.php`, mount your custom `server.php` file to `/var/www/fluxcp/config/servers.override.php`. Recursive array merge will be performed against the default `config/servers.php`, so you can just define config key that you want to replace.
 
