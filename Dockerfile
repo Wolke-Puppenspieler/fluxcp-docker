@@ -16,7 +16,7 @@ RUN mkdir -p /var/www/fluxcp \
     && mkdir -p /var/log/supervisor \
     && mkdir -p /etc/supervisord.d \
     && apk update \
-    && apk add --no-cache nginx php5-fpm php5-pdo php5-pdo_mysql php5-gd gd tidyhtml git nano dos2unix mysql-client bind-tools p7zip supervisor \
+    && apk add --no-cache nginx php5-fpm php5-iconv php5-pdo php5-pdo_mysql php5-gd gd tidyhtml git nano dos2unix mysql-client bind-tools p7zip supervisor \
     && adduser -D -g 'www' www
 
 RUN sed -i "s|;listen.owner\s*=\s*nobody|listen.owner = ${PHP_FPM_USER}|g" /etc/php5/php-fpm.conf \

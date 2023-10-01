@@ -23,3 +23,21 @@ return array(
 ?>
 ```
 Then mount the file using something like `docker run --rm -v './servers.override.php:/var/www/fluxcp/config/servers.override.php' ...<this docker image>`
+
+### MySQL Docker Compose Example
+This is an example MySQL definition in docker that has been tested to work with FluxCP.
+```yaml
+services:
+  mysql:
+    image: mysql:5.7
+    command: --character-set-server=latin1 --collation-server=latin1_swedish_ci --sql_mode=NO_ZERO_DATE
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: <your-root-password>
+      MYSQL_DATABASE: ragnarok
+      MYSQL_USER: ragnarok
+      MYSQL_PASSWORD: ragnarok
+    volumes:
+      - ./data/mysql:/var/lib/mysql:rw
+```
