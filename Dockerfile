@@ -40,7 +40,7 @@ RUN 7z x /tmp/items.7z -o/var/www/fluxcp \
     && rm -f /tmp/items.7z
 
 RUN mkdir -p /var/www/fluxcp \
-    && wget 'https://github.com/HerculesWS/FluxCP/archive/refs/heads/master.zip' -O /tmp/fluxcp.zip \
+    && wget 'https://github.com/rathena/FluxCP/archive/refs/heads/master.zip' -O /tmp/fluxcp.zip \
     && ln -s /var/www/fluxcp /tmp/FluxCP-master \
     && unzip /tmp/fluxcp.zip -d /tmp \
     && rm -f /tmp/FluxCP-master \
